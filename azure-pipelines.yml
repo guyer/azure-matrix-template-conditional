@@ -13,17 +13,20 @@ steps:
   parameters:
     VAL_AS_MACRO: $(VAR)
     VAL_AS_VARIABLE_DOT: variables.VAR
-- ${{if eq(VAR, 'bar')}}:
-  - template: template_bar.yml
-    displayName: template conditional on variable from matrix
+# Unrecognized value: 'VAR'
+# - ${{if eq(VAR, 'bar')}}:
+#   - template: template_bar.yml
+#     displayName: template conditional on variable from matrix
 - ${{if eq(variables.VAR, 'bar')}}:
   - template: template_bar.yml
     displayName: template conditional on variable from matrix with "variables." syntax
-# this next one would fail to compile
+# Unexpected value 'condition'
+# Unexpected value 'displayName'
 # - template: template_bar.yml
 #   condition: eq(VAR, 'bar')
 #   displayName: condition conditional on variable from matrix
-# this next one would fail to compile
+# Unexpected value 'condition'
+# Unexpected value 'displayName'
 # - template: template_bar.yml
 #   condition: eq(variables.VAR, 'bar')
 #   displayName: condition conditional on variable from matrix with "variables." syntax
