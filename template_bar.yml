@@ -1,0 +1,4 @@
+# template_bar.yml
+
+steps:
+- bash: echo template_bar!
