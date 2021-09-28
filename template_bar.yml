@@ -1,4 +1,9 @@
 # template_bar.yml
+parameters:
+- name: MESSAGE
+  type: string
+  default: NOPE
 
 steps:
-- bash: echo template_bar!
+- bash: echo ${{ parameters.MESSSAGE }}
+  displayName: ${{ parameters.MESSSAGE }}

@@ -27,42 +27,50 @@ steps:
 # Unrecognized value: 'VAR'
 # - ${{if eq(VAR, 'bar')}}:
 #   - template: template_bar.yml
-#     displayName: template conditional on value from template file as a variable
+#     parameters:
+#       MESSAGE: template conditional on value from template file as a variable
 - ${{if eq(variables.VAR, 'bar')}}:
   - template: template_bar.yml
-    displayName: template conditional on value from template file as an expression with literal "variables." syntax
+    parameters:
+      MESSAGE: template conditional on value from template file as an expression with literal "variables." syntax
 - ${{if eq(parameters.VAL_AS_MACRO, 'bar')}}:
   - template: template_bar.yml
-    displayName: template conditional on value from template file as an expression with macro syntax
+    parameters:
+      MESSAGE: template conditional on value from template file as an expression with macro syntax
 - ${{if eq(parameters.VAL_AS_VARIABLE_DOT, 'bar')}}:
   - template: template_bar.yml
-    displayName: template conditional on value from template file as an expression with "variables." syntax
+    parameters:
+      MESSAGE: template conditional on value from template file as an expression with "variables." syntax
 # Unexpected value 'condition'
-# Unexpected value 'displayName'
 # - template: template_bar.yml
 #   condition: eq(VAR, 'bar')
-#   displayName: condition conditional on variable from matrix
+#   parameters:
+#     MESSAGE: condition conditional on variable from matrix
 # Unexpected value 'condition'
-# Unexpected value 'displayName'
 # - template: template_bar.yml
 #   condition: eq(variables.VAR, 'bar')
-#   displayName: condition conditional on variable from matrix with "variables." syntax
+#   parameters:
+#     MESSAGE: condition conditional on variable from matrix with "variables." syntax
 # Unexpected value 'condition'
-# Unexpected value 'displayName'
 # - template: template_bar.yml
 #   condition: eq(${{ parameters.VAL_AS_MACRO }}, 'bar')
-#   displayName: condition conditional on parameter as macro syntax
+#   parameters:
+#     MESSAGE: condition conditional on parameter as macro syntax
 # Unexpected value 'condition'
-# Unexpected value 'displayName'
 # - template: template_bar.yml
 #   condition: eq(${{ parameters.VAL_AS_VARIABLE_DOT }}, 'bar')
-#   displayName: condition conditional on parameter with "variables." syntax
-- if eq(variables.VAR, 'bar'):
-  - template: template_bar.yml
-    displayName: template conditional on value from template file as an expression with literal "variables." syntax
+#   parameters:
+#     MESSAGE: condition conditional on parameter with "variables." syntax
+# Unexpected value 'if eq(variables.VAR, 'bar')'
+# - if eq(variables.VAR, 'bar'):
+#   - template: template_bar.yml
+#     parameters:
+#       MESSAGE: template conditional on value from template file as an expression with literal "variables." syntax
 - if eq(${{ parameters.VAL_AS_MACRO }}, 'bar'):
   - template: template_bar.yml
-    displayName: template conditional on value from template file as an expression with macro syntax
+    parameters:
+      MESSAGE: template conditional on value from template file as an expression with macro syntax
 - if eq(${{ parameters.VAL_AS_VARIABLE_DOT }}, 'bar'):
   - template: template_bar.yml
-    displayName: template conditional on value from template file as an expression with "variables." syntax
+    parameters:
+      MESSAGE: template conditional on value from template file as an expression with "variables." syntax
