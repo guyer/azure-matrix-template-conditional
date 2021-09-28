@@ -18,7 +18,7 @@ steps:
 #   - template: template_bar.yml
 #     parameters:
 #       MESSAGE: template conditional on variable from matrix
-- ${{if not(eq(variables.VAR, 'bar'))}}:
+- ${{if eq(variables.VAR, 'bar')}}:
   - template: template_bar.yml
     parameters:
       MESSAGE: template conditional on variable from matrix with "variables." syntax
