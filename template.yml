@@ -36,15 +36,23 @@ steps:
 - ${{if eq(parameters.VAL_AS_VARIABLE_DOT, 'bar')}}:
   - template: template_bar.yml
     displayName: template conditional on value from template file as an expression with "variables." syntax
-- template: template_bar.yml
-  condition: eq(VAR, 'bar')
-  displayName: condition conditional on variable from matrix
-- template: template_bar.yml
-  condition: eq(variables.VAR, 'bar')
-  displayName: condition conditional on variable from matrix with "variables." syntax
-- template: template_bar.yml
-  condition: eq(${{ parameters.VAL_AS_MACRO }}, 'bar')
-  displayName: condition conditional on parameter as macro syntax
-- template: template_bar.yml
-  condition: eq(${{ parameters.VAL_AS_VARIABLE_DOT }}, 'bar')
-  displayName: condition conditional on parameter with "variables." syntax
+# Unexpected value 'condition'
+# Unexpected value 'displayName'
+# - template: template_bar.yml
+#   condition: eq(VAR, 'bar')
+#   displayName: condition conditional on variable from matrix
+# Unexpected value 'condition'
+# Unexpected value 'displayName'
+# - template: template_bar.yml
+#   condition: eq(variables.VAR, 'bar')
+#   displayName: condition conditional on variable from matrix with "variables." syntax
+# Unexpected value 'condition'
+# Unexpected value 'displayName'
+# - template: template_bar.yml
+#   condition: eq(${{ parameters.VAL_AS_MACRO }}, 'bar')
+#   displayName: condition conditional on parameter as macro syntax
+# Unexpected value 'condition'
+# Unexpected value 'displayName'
+# - template: template_bar.yml
+#   condition: eq(${{ parameters.VAL_AS_VARIABLE_DOT }}, 'bar')
+#   displayName: condition conditional on parameter with "variables." syntax
