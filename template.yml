@@ -66,11 +66,13 @@ steps:
 #   - template: template_bar.yml
 #     parameters:
 #       MESSAGE: template conditional on value from template file as an expression with literal "variables." syntax
-- if eq(${{ parameters.VAL_AS_MACRO }}, 'bar'):
-  - template: template_bar.yml
-    parameters:
-      MESSAGE: template conditional on value from template file as an expression with macro syntax
-- if eq(${{ parameters.VAL_AS_VARIABLE_DOT }}, 'bar'):
-  - template: template_bar.yml
-    parameters:
-      MESSAGE: template conditional on value from template file as an expression with "variables." syntax
+# Unexpected value 'if eq($(VAR), 'bar')'
+# - if eq(${{ parameters.VAL_AS_MACRO }}, 'bar'):
+#   - template: template_bar.yml
+#     parameters:
+#       MESSAGE: template conditional on value from template file as an expression with macro syntax
+# Unexpected value 'if eq(variables.VAR, 'bar')'
+# - if eq(${{ parameters.VAL_AS_VARIABLE_DOT }}, 'bar'):
+#   - template: template_bar.yml
+#     parameters:
+#       MESSAGE: template conditional on value from template file as an expression with "variables." syntax
