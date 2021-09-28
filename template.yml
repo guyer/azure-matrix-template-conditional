@@ -24,9 +24,10 @@ steps:
 # - bash: echo NOPE
 #   displayName: conditional on parameter as macro syntax
 #   condition: eq(${{ parameters.VAL_AS_MACRO }}, 'foo')
-- ${{if eq(VAR, 'bar')}}:
-  - template: template_bar.yml
-    displayName: template conditional on value from template file as a variable
+# Unrecognized value: 'VAR'
+# - ${{if eq(VAR, 'bar')}}:
+#   - template: template_bar.yml
+#     displayName: template conditional on value from template file as a variable
 - ${{if eq(variables.VAR, 'bar')}}:
   - template: template_bar.yml
     displayName: template conditional on value from template file as an expression with literal "variables." syntax
