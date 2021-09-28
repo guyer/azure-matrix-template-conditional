@@ -19,10 +19,12 @@ steps:
 - ${{if eq(variables.VAR, 'bar')}}:
   - template: template_bar.yml
     displayName: template conditional on variable from matrix with "variables." syntax
-- template: template_bar.yml
-  condition: eq(VAR, 'bar')
-  displayName: condition conditional on variable from matrix
-- template: template_bar.yml
-  condition: eq(variables.VAR, 'bar')
-  displayName: condition conditional on variable from matrix with "variables." syntax
+# this next one would fail to compile
+# - template: template_bar.yml
+#   condition: eq(VAR, 'bar')
+#   displayName: condition conditional on variable from matrix
+# this next one would fail to compile
+# - template: template_bar.yml
+#   condition: eq(variables.VAR, 'bar')
+#   displayName: condition conditional on variable from matrix with "variables." syntax
 
