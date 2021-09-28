@@ -5,5 +5,5 @@ parameters:
   default: NOPE
 
 steps:
-- bash: echo ${{ parameters.MESSSAGE }}
-  displayName: ${{ parameters.MESSSAGE }}
+- bash: echo ${{ parameters.MESSAGE }}
+  displayName: ${{ parameters.MESSAGE }}
