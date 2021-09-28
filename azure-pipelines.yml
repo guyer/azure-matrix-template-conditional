@@ -1,0 +1,17 @@
+# azure-pipelines.yml
+pool: { vmImage: ubuntu-latest }
+strategy:
+  matrix:
+    foo:
+      VAR: foo
+    bar:
+      VAR: bar
+steps:
+- bash: echo $(VAR)
+  displayName: value from main file
+- template: template.yml
+  parameters:
+    VAL_AS_MACRO: $(VAR)
+    VAL_AS_VARIABLE_DOT: variables.VAR
+
+
