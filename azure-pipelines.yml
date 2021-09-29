@@ -6,31 +6,16 @@ strategy:
       VAR: foo
     bar:
       VAR: bar
-steps:
-- bash: echo $(VAR)
-  displayName: value from main file
-- template: template.yml
-  parameters:
-    VAL_AS_MACRO: $(VAR)
-    VAL_AS_VARIABLE_DOT: variables.VAR
-# Unrecognized value: 'VAR'
-# - ${{if eq(VAR, 'bar')}}:
-#   - template: template_bar.yml
-#     parameters:
-#       MESSAGE: template conditional on variable from matrix
-- ${{if eq(variables.VAR, 'bar')}}:
+
+jobs:
+- job: Bar
+  steps:
   - template: template_bar.yml
     parameters:
-      MESSAGE: template conditional on variable from matrix with "variables." syntax
-# Unexpected value 'condition'
-# - template: template_bar.yml
-#   condition: eq(VAR, 'bar')
-#   parameters:
-#     MESSAGE: condition conditional on variable from matrix
-# Unexpected value 'condition'
-# Unexpected value 'displayName'
-# - template: template_bar.yml
-#   condition: eq(variables.VAR, 'bar')
-#   parameters:
-#     MESSAGE: condition conditional on variable from matrix with "variables." syntax
-
+      MESSAGE: conditional job on variable from matrix
+  condition: eq(VAR, 'bar')
+- job: Foo
+  steps:
+  - bash: echo foo
+    displayName: alternative
+  condition: eq(VAR, 'foo')
