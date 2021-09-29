@@ -7,15 +7,16 @@ strategy:
     bar:
       VAR: bar
 
-jobs:
-- job: Bar
-  steps:
-  - template: template_bar.yml
-    parameters:
-      MESSAGE: conditional job on variable from matrix
-  condition: eq(VAR, 'bar')
-- job: Foo
-  steps:
-  - bash: echo foo
-    displayName: alternative
-  condition: eq(VAR, 'foo')
+stages:
+  jobs:
+  - job: Bar
+    steps:
+    - template: template_bar.yml
+      parameters:
+        MESSAGE: conditional job on variable from matrix
+    condition: eq(VAR, 'bar')
+  - job: Foo
+    steps:
+    - bash: echo foo
+      displayName: alternative
+    condition: eq(VAR, 'foo')
